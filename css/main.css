@@ -23,6 +23,9 @@
    --portfolio-btn-shadow: 0px 3px 1px rgba(0, 0, 0, 0.1), 0px 1px 2px rgba(0, 0, 0, 0.08), 0px 2px 2px rgba(0, 0, 0, 0.12);
    --social-icons-team: #afb1b8;
    --bcg-footer-icons: rgba(255, 255, 255, 0.1);
+   --backdrop-color:  rgba(0, 0, 0, 0.2);
+   --modal-window-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14), 0px 2px 1px rgba(0, 0, 0, 0.2);
+   --modal-close-btn: #0000001A;
 }
 
 /* 
@@ -258,8 +261,43 @@ img {
    background-color: var(--body-hero-color);
 }
 
-.footer-links {
-   background-color: var(--bcg-footer-color);
+/* Модальное окно */
+.backdrop {
+   position: fixed;
+   top: 0;
+   left: 0;
+
+   width: 100%;
+   height: 100%;
+
+   background-color: var(--backdrop-color);
+}
+
+.backdrop.is-hidden {
+   opacity: 0;
+   pointer-events: none;
+}
+
+.modal {
+   position: absolute;
+   top: 50%;
+   left: 50%;
+   transform: translate(-50%, -50%);
+
+   min-width: 528px;
+   min-height: 581px;
+
+   box-shadow: var(--modal-window-shadow);
+   border-radius: 4px;
+   background-color: var(--body-hero-color);
+}
+
+.modal-close {
+   width: 30px;
+   height: 30px;
+
+   border: 1px solid var(--modal-close-btn);
+   box-sizing: border-box;
 }
 
 /* Преимущества работы со студией*/
@@ -433,6 +471,10 @@ img {
    font-family: var(--main-font); 
 }
 
+.footer-links {
+   background-color: var(--bcg-footer-color);
+}
+
 .address,
 .social-media-footer {
    width: 270px;
@@ -584,3 +626,12 @@ img {
    font-size: 16px;
    line-height: 2;
 }
+
+/* 	1. Hover on portfolio cards + overlay
+
+.flex-actions {
+   position: absolute;
+   opacity
+   overlay ::after on div img
+}
+*/
