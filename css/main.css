@@ -26,6 +26,8 @@
    --backdrop-color:  rgba(0, 0, 0, 0.2);
    --modal-window-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14), 0px 2px 1px rgba(0, 0, 0, 0.2);
    --modal-close-btn: #0000001A;
+   --trans-duration: 250ms;
+   --trans-timing: cubic-bezier(0.4, 0, 0.2, 1);
 
    --overlay-portfolio-bcg: rgba(33, 150, 243, 0.9);
    --overlay-examples-bcg: rgba(47, 48, 58, 0.8);
@@ -115,6 +117,8 @@ body {
    font-weight: 700;
    line-height: 1.2;
    color: var(--header-studio-color);
+
+   transition: color var(--trans-duration) var(--trans-timing);
 }
 
 .logo-accent,
@@ -141,13 +145,17 @@ body {
    padding-bottom: 32px;
 
    color: var(--title-color); 
+
+   transition: color var(--trans-duration) var(--trans-timing);
 }
 
 .site-nav .current { position: relative; }
 
 .site-nav .current::after {
-   position: absolute;
    content: "";
+   display: block;
+   position: absolute;
+   bottom: 0;
    width: 100%;
    height: 4px;
    background-color: var(--accent-color);
@@ -168,6 +176,8 @@ body {
    padding-bottom: 32px;
 
    color: var(--main-text-color); 
+
+   transition: color var(--trans-duration) var(--trans-timing);
 }
 
 .contacts-icon { 
@@ -266,6 +276,7 @@ img {
    background-color: var(--accent-color);
    border: 1px solid transparent;
    box-shadow: var(--hero-btn-shadow);
+   transition: color var(--trans-duration) var(--trans-timing), background-color var(--trans-duration) var(--trans-timing);
 }
 
 .hero-button:hover,
@@ -290,6 +301,7 @@ img {
 .backdrop.is-hidden {
    opacity: 0;
    pointer-events: none;
+   visibility: hidden;
 }
 
 .modal {
@@ -297,9 +309,9 @@ img {
    top: 50%;
    left: 50%;
    transform: translate(-50%, -50%);
-   overflow: auto;
 
-   min-width: 528px;
+   width: 100%;
+   max-width: 528px;
    min-height: 581px;
 
    box-shadow: var(--modal-window-shadow);
@@ -308,14 +320,34 @@ img {
 }
 
 .modal-close {
+   position: absolute;
+   top: 8px;
+   right: 8px;
+   display: flex;
+   align-items: center;
    width: 30px;
    height: 30px;
+   padding: 6px;
 
    border: 1px solid var(--modal-close-btn);
-   box-sizing: border-box;
+   border-radius: 30px;
+   background-color: var(--body-hero-color);
+   transition: background-color var(--trans-duration) var(--trans-timing);
 }
 
-/* Преимущества работы со студией*/
+.modal-close:hover,
+.modal-close:focus {
+   background-color: var(--modal-close-btn);
+}
+
+.modal-close-svg {
+   width: 18px;
+   height: 18px;
+
+   fill: var(--header-studio-color);
+}
+
+/* Преимущества работы со студией */
 .benefits { display: flex; }
 
 .benefits .item { width: 270px; }
@@ -415,12 +447,17 @@ img {
    width: 44px;
    height: 44px;
    border-radius: 50%;
+
+   transition: fill var(--trans-duration) var(--trans-timing), background-color var(--trans-duration) var(--trans-timing);
 }
 
 .social-icons-svg {
    width: 20px;
    height: 20px;
+
    fill: var(--social-icons-team);
+
+   transition: fill var(--trans-duration) var(--trans-timing);
 }
 
 .social-icons-link:hover .social-icons-svg, 
@@ -445,6 +482,8 @@ img {
    border: 1px solid var(--main-text-color);
    box-sizing: border-box;
    border-radius: 4px;
+
+   transition: border-color var(--trans-duration) var(--trans-timing);
 }
 
 .client-card:not(:last-child) { margin-right: 30px; }
@@ -456,14 +495,17 @@ img {
 
 .client-card-link {
    display: flex;
-   padding: 16px 32px;
+   padding: 25px 32px;
+
+   transition: fill var(--trans-duration) var(--trans-timing);
 }
 
 .client-icons-svg { 
    width: 106px;
-   height: 60px;
+   height: 45px;
 
    fill: var(--social-icons-team);
+   transition: fill var(--trans-duration) var(--trans-timing);
 }
 
 .client-card-link:hover .client-icons-svg,
@@ -515,11 +557,17 @@ img {
 .map-link,
 .logo-footer {
    color: var(--body-hero-color);
+
+   transition: color var(--trans-duration) var(--trans-timing);
 }
 
 .contacts-footer { margin-top: 9px; }
 
-.contacts-footer .link { color: var(--footer-contacts-color); }
+.contacts-footer .link { 
+   color: var(--footer-contacts-color); 
+
+   transition: color var(--trans-duration) var(--trans-timing);
+}
 
 .map-link,
 .contacts-footer {
@@ -551,7 +599,10 @@ img {
 
 .social-icons-footer .social-icons-svg { fill: var(--body-hero-color); }
 
-.social-icons-footer .social-icons-link { background-color: var(--bcg-footer-icons); }
+.social-icons-footer .social-icons-link { 
+   background-color: var(--bcg-footer-icons); 
+   transition: background-color var(--trans-duration) var(--trans-timing);
+}
 
 .social-icons-link:hover,
 .social-icons-link:focus { 
@@ -586,6 +637,7 @@ img {
 
    background-color: var(--bcg-team-color);
    border: 1px solid transparent;
+   transition: color var(--trans-duration) var(--trans-timing), background-color var(--trans-duration) var(--trans-timing), box-shadow var(--trans-duration) var(--trans-timing);
 }
 
 .portfolio-button.current,
@@ -609,8 +661,14 @@ img {
    margin-right: 30px;
 }
 
-.flex-element:focus,
-.flex-element:hover { 
+.flex-element-link { 
+   display: block; 
+
+   transition: box-shadow var(--trans-duration) var(--trans-timing), opacity var(--trans-duration) var(--trans-timing);
+}
+
+.flex-element-link:hover,
+.flex-element-link:focus { 
    box-shadow: var(--project-hover);
 }
 
@@ -644,28 +702,30 @@ img {
    line-height: 2;
 }
 
-/* 	1. Hover on portfolio cards + overlay
-
-.flex-actions {
-   position: absolute;
-   opacity
-   overlay ::after on div img
+.flex-img { 
+   position: relative; 
+   overflow: hidden;
 }
-*/
-.flex-img { position: relative; }
 
 .overlay-project {
    position: absolute;
+   content: "";
+   top: 0;
+   display: inline-block;
    width: 100%;
    height: 100%;
    opacity: 0;
    padding: 63px 24px;
 
+
+   transform: translateY(100%);
    background-color: var(--overlay-portfolio-bcg);
+   transition: opacity var(--trans-duration) var(--trans-timing), transform var(--trans-duration) var(--trans-timing);
 }
 
 .flex-element-link:hover .overlay-project,
 .flex-element-link:focus .overlay-project {
+   transform: translateY(0);
    opacity: 1;
 }
 
