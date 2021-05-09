@@ -341,12 +341,12 @@ img {
    border: 1px solid var(--modal-close-btn);
    border-radius: 30px;
    background-color: var(--body-hero-color);
-   transition: background-color var(--trans-duration) var(--trans-timing);
+   transition: fill var(--trans-duration) var(--trans-timing);
 }
 
-.modal-close:hover,
-.modal-close:focus {
-   background-color: var(--modal-close-btn);
+.modal-close:hover .modal-close-svg,
+.modal-close:focus .modal-close-svg {
+   fill: var(--accent-color);
 }
 
 .modal-close-svg {
