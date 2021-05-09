@@ -28,7 +28,6 @@
    --modal-close-btn: #0000001A;
    --trans-duration: 250ms;
    --trans-timing: cubic-bezier(0.4, 0, 0.2, 1);
-
    --overlay-portfolio-bcg: rgba(33, 150, 243, 0.9);
    --overlay-examples-bcg: rgba(47, 48, 58, 0.8);
 }
@@ -295,6 +294,8 @@ img {
    width: 100%;
    height: 100%;
 
+   opacity: 1;
+   transition: opacity var(--trans-duration) var(--trans-timing);
    background-color: var(--backdrop-color);
 }
 
@@ -304,11 +305,17 @@ img {
    visibility: hidden;
 }
 
+.backdrop.is-hidden .modal {
+   opacity: 0;
+   transform: translate(-50%, -50%) scale(0.9);
+}
+
 .modal {
    position: absolute;
    top: 50%;
    left: 50%;
-   transform: translate(-50%, -50%);
+   transform: translate(-50%, -50%) scale(1);
+   opacity: 1;
 
    width: 100%;
    max-width: 528px;
@@ -317,6 +324,8 @@ img {
    box-shadow: var(--modal-window-shadow);
    border-radius: 4px;
    background-color: var(--body-hero-color);
+   
+   transition: transform var(--trans-duration) var(--trans-timing), opacity var(--trans-duration) var(--trans-timing);
 }
 
 .modal-close {
@@ -369,6 +378,7 @@ img {
    height: 70px;
 }
 
+.overlay-examples-text,
 .section-title-benefits {
    font-size: 14px;
    font-weight: 700;
@@ -393,6 +403,25 @@ img {
 .examples .list { display: flex; }
 
 .examples-element:not(:last-child) { margin-right: 30px; }
+
+.examples-element { position: relative; }
+
+.overlay-examples {
+   position: absolute;
+   text-align: center;
+   bottom: 0;
+   left: 0;
+   width: 100%;
+   padding-top: 27px;
+   padding-bottom: 27px;
+   
+   background-color: var(--overlay-examples-bcg);
+}
+
+.overlay-examples-text {
+   margin: 0;
+   color: var(--body-hero-color);
+}
 
 /* Команда - секция с именами, должностями и фото */
 .team { background-color: var(--bcg-team-color); }
