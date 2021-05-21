@@ -303,6 +303,8 @@ img {
    opacity: 0;
    pointer-events: none;
    visibility: hidden;
+
+   transition: opacity var(--trans-duration) var(--trans-timing), visibility var(--trans-duration) var(--trans-timing);
 }
 
 .backdrop.is-hidden .modal {
@@ -408,12 +410,14 @@ img {
 
 .overlay-examples {
    position: absolute;
-   text-align: center;
    bottom: 0;
    left: 0;
+
+   display: flex;
+   align-items: center;
+   justify-content: center;
    width: 100%;
-   padding-top: 27px;
-   padding-bottom: 27px;
+   height: 70px;
    
    background-color: var(--overlay-examples-bcg);
 }
@@ -506,27 +510,20 @@ img {
    justify-content: center;
 }
 
-.client-card {
+.client-card:not(:last-child) { margin-right: 30px; }
+
+.client-card-link {
+   height: 92px;
    width: 170px;
+
+   display: flex;
+   align-items: center;
+   justify-content: center;
+
    border: 1px solid var(--main-text-color);
    box-sizing: border-box;
    border-radius: 4px;
-
-   transition: border-color var(--trans-duration) var(--trans-timing);
-}
-
-.client-card:not(:last-child) { margin-right: 30px; }
-
-.client-card:hover,
-.client-card:focus { 
-   border-color: var(--accent-color); 
-}
-
-.client-card-link {
-   display: flex;
-   padding: 25px 32px;
-
-   transition: fill var(--trans-duration) var(--trans-timing);
+   transition: fill var(--trans-duration) var(--trans-timing), border-color var(--trans-duration) var(--trans-timing);
 }
 
 .client-icons-svg { 
@@ -537,9 +534,12 @@ img {
    transition: fill var(--trans-duration) var(--trans-timing);
 }
 
+.client-card-link:hover,
+.client-card-link:focus,
 .client-card-link:hover .client-icons-svg,
 .client-card-link:focus .client-icons-svg { 
    fill: var(--accent-color); 
+   border-color: var(--accent-color); 
 }
 
 /* 
